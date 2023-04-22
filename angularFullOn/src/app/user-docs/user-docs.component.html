@@ -1,0 +1,42 @@
+<!-- user Docs form -->
+<!-- form handling  -->
+
+      <!-- using formControl only -->
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput value="Sushi" placeholder="name" [formControl]="nameFormControl">  
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            Please enter a valid name
+          </mat-error>
+          </mat-form-field>
+        <mat-form-field class="example-full-width">
+           
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl"
+                 placeholder="Email">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+
+      <!-- using formgroup -->
+
+      <!-- <form class="example-form" [formGroup]="customerForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput value="Sushi" placeholder="name" formControlName="nameFormControl">  
+          </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="emailFormControl"
+                 placeholder="Email">
+          <mat-hint>Errors appear instantly!</mat-hint>
+        </mat-form-field>
+      </form> -->
