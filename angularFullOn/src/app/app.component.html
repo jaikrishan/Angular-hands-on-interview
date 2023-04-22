@@ -1,0 +1,29 @@
+
+<!-- <app-pipe-app (enternums)="getNumber($event)"></app-pipe-app>
+
+converted number is {{enteredNumber | userPipe }} -->
+
+<!-- <app-user-table></app-user-table> -->
+
+<!-- <app-user-docs></app-user-docs> -->
+
+<div class="container">
+ 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/']"><strong>  </strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a (click)="navigateCustForm()" routerLinkActive="active">custForm</a></li>
+        <li><a [routerLink]="['pipeApp']">pipeApp</a></li>
+        <li><a [routerLink]="['userTable']">userTable</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+ <router-outlet></router-outlet>
+ 
+</div>
+
+<!-- <router-outlet></router-outlet> -->
