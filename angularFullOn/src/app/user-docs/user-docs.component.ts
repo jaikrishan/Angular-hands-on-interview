@@ -13,7 +13,7 @@ export class UserDocsComponent implements OnInit{
   @Input('userData') users: IUserInterface[] =[];
  
   emailFormControl = new FormControl('abc@gmail.com', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('disabled', [Validators.required])
+  nameFormControl = new FormControl('disabled', [Validators.required]); // disabled  = true
 
   customerForm! :  FormGroup;
   constructor(private fb : FormBuilder, private activatedRoute : ActivatedRoute) {

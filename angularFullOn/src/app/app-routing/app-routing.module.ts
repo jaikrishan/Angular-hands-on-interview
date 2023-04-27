@@ -9,7 +9,8 @@ import { AppComponent } from '../app.component';
 const route: Routes = [
   {path : '', redirectTo : 'custForm', pathMatch: 'full' },
   {path : 'custForm/:id/:id', component :UserDocsComponent },
-  {path : 'pipeApp', component :PipeAppComponent },
+  // {path : 'pipeApp', component :PipeAppComponent },
+  {path: 'pipeApp' , loadChildren : () => import('../pipe-app/pipe-app.module').then(m => m.PipeAppModule)},
   {path : 'userTable', component :UserTableComponent },
   {path : '**', component :UserTableComponent }
 ]

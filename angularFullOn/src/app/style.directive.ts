@@ -3,7 +3,7 @@ import { Directive, ElementRef, HostBinding, HostListener, OnInit , Renderer2} f
 @Directive({
   selector: '[appStyle]'
 })
-export class StyleDirective implements OnInit{
+export class StyleDirective implements OnInit {
 
   constructor(private elementRef : ElementRef, private renderer: Renderer2) { }
 
@@ -19,7 +19,4 @@ export class StyleDirective implements OnInit{
     // alert('highlighted');
     this.color = 'green';
   }
-
-
-
 }

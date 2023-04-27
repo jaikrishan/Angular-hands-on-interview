@@ -51,6 +51,105 @@ Or then alone:
     console.log('ok')
 } -->
 
+// Subject and Behavior subject
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+@Injectable({providedIn: 'root'})
+export class AppService {
+  observer = new Subject();
+  public subscriber$ = this.observer.asObservable();
+
+  emitData(data) {
+    this.observer.next(data);
+  }
+}
+
+constructor(private appService: AppService) {}
+
+ngOnInit() {
+  this.appService.subscriber$.subscribe(data => {
+    console.log(data);
+  });
+}
+
+
+// deep and shallow
+
+var obj = {
+    name : 'jai',
+    fullName : {
+        name : 'jai krishan'
+    }
+}
+var copyShallow1 = obj;
+// var copyShallow1 = {...obj};
+var copyShallow2 = Object.assign({},obj);
+var deepCopy = JSON.parse(JSON.stringify(obj));
+
+copyShallow1.name = 'Binit';
+copyShallow1.fullName.name = ' Binit kumar';
+
+copyShallow2.name = 'Binit';
+copyShallow2.fullName.name = ' Binit kumar';
+
+deepCopy.name = 'Binit';
+deepCopy.fullName.name = ' Binit kumar';
+
+console.log(obj);
+console.log(copyShallow1);
+// console.log(copyShallow2);
+// console.log(deepCopy);
+
+// Slice - did not change original array and splice - change orig arr
+
+var a = [1,2,3];
+a1= a.slice(1);
+console.log(a1); => a is 1,2,3 but a1 is 2,3
+
+var a = [1,2,3];
+a1= a.splice(1);
+console.log(a); => a1 is 2,3 but a is 1 
+
+
+// Async and await 
+
+function resolveAfter2Sec() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('resolve after 2 sec')
+        },2000)       
+        })
+}
+
+async function checkPromise() {
+    console.log('first call');
+    <!-- await resolveAfter2Sec();
+    console.log('after call') -->
+    const result = await resolveAfter2Sec();
+    console.log(result)
+}
+checkPromise();
+
+
+let p = new Promise((resolve) => resolve('Resolved'))
+p.then(data => console.log(data))
+
+async function foo() {
+  return 1;
+}
+console.log(foo()); // Promise {1}
+
+same as 
+
+function foo() {
+  return Promise.resolve(1);
+}
+console.log(foo());
+
+<!-- await is only valid in async function -->
+
+
 
 
 

@@ -13,6 +13,6 @@ export class UserPipePipe implements PipeTransform {
     // else {
     //   return 'Mrs ' + value
     // }
-    return value/1024;
+    return (value/1024).toFixed(1) + 'MB';
   }
 }

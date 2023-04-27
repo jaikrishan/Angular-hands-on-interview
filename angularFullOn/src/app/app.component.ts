@@ -11,21 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
-   enteredNumber : number = 0 ;
- 
   constructor(private userService : UserServiceService, private router: Router) {}
 
-  getNumber(enternum:string) {
-      console.log(enternum);
-      if(isNaN(parseInt(enternum))) {
-        console.log("please provide a number")
-      }
-      else {
-        console.log('fine');
-        this.enteredNumber = parseInt(enternum);
-      }
-  }
+  // getNumber(enternum:string) {
+  //     console.log(enternum);
+  //     if(isNaN(parseInt(enternum))) {
+  //       console.log("please provide a number")
+  //     }
+  //     else {
+  //       console.log('fine');
+  //       this.enteredNumber = parseInt(enternum);
+  //     }
+  // }
 
   navigateCustForm() {
     this.router.navigate(['/custForm',3,4], {

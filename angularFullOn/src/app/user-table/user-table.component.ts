@@ -10,11 +10,12 @@ import { UserServiceService } from '../user-service.service';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  @ViewChild(MatTable) table: MatTable<IUserInterface> | undefined;
+  @ViewChild(MatTable) table: MatTable<IUserInterface | string> | undefined;
   title = 'angularFullOn';
-   users : IUserInterface[] = [];
-   users$ : Observable<IUserInterface[]> | undefined;
+   users : IUserInterface[]  = [];
+   users$ : Observable<IUserInterface[] | string> | undefined;
    displayedColumns: string[] = ['id', 'name', 'email', 'gender','status'];
+   error: string = "server error";
 
    constructor(private userService : UserServiceService ){
     console.log('const called');
@@ -28,11 +29,15 @@ export class UserTableComponent implements OnInit {
     // });
    
     this.users$ = this.userService.getUser$;
-    this.users$.subscribe(item => {
+    this.users$.subscribe((item: any) => {
       this.users = item
-    })
+    },
+    error =>  {
+      this.error = error
+    },
+    () => {}
+    );
   }
-
   addData() {
     this.table?.renderRows();
   }
